@@ -24,15 +24,13 @@ public abstract class Account {
 	// Establishes whether an account is active and available for use
 	public boolean approved;
 
-//-- Constructors
+	
+//-- Methods
 
-	public Account() {
-		super();
-	}
-
-	public Account(int accountNum, StringBuilder username, StringBuilder password,
+	// Fills in a complete account with all its fields
+	public void makeAccount(int accountNum, StringBuilder username, StringBuilder password,
 			ArrayList<StringBuilder> accountHolders, float accountBal, boolean approved) {
-		super();
+
 		this.accountNum = accountNum;
 		this.username = username;
 		this.password = password;
@@ -40,8 +38,7 @@ public abstract class Account {
 		this.accountBal = accountBal;
 		this.approved = approved;
 	}
-
-//-- Methods	
+	
 	// Checks the current accounts balance
 	public void checkBal() {
 
