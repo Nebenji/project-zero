@@ -31,18 +31,44 @@ public class UserAccount extends Account implements Serializable {
 			
 		 super();
 		 super.makeAccount(accountNum, username, password, accountHolders, accountBal, approved);
-//		 this.account.accountNum = accountNum;
-//		 this.account.accountBal = accountBal;
-//		 this.account.username = username;
-//		 this.username = username;
-//		 this.account.password = password;
-//		 this.password = password;
-//		 this.account.accountHolders = accountHolders;
-//		 this.account.approved = approved;
+		 this.username = username;
+		 this.password = password;
 		 
 	}
 	
 //-- Methods
+	
+	@Override
+	public void checkBal() {
+		
+		System.out.println("Your current account balance is $" + this.accountBal);
+		
+	}
+	
+	@Override
+	public void desposit(float money) {
+		
+		this.accountBal += money;
+		System.out.println("You deposited $" + money + " in your account!");
+		
+	}
+	
+	@Override
+	public void transfer(Account account, float money) {
+		
+		this.accountBal -= money;
+		account.accountBal += money;
+		System.out.println("You tranferred $" + money + " to " + account.accountHolders + "!");
+		
+	}
+	
+	@Override
+	public void withdraw(float money) {
+		
+		this.accountBal -= money;
+		System.out.println("You withdrew $" + money + " from your account!");
+		
+	}
 	
 	public Customer getCustomer() {
 		return customer;
