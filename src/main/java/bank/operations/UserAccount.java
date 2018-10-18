@@ -25,7 +25,6 @@ public class UserAccount extends Account implements Serializable {
 		
 	}
 	
-	
 	public UserAccount(int accountNum, StringBuilder username, StringBuilder password,
 			ArrayList<StringBuilder> accountHolders, float accountBal, boolean approved) {
 			
