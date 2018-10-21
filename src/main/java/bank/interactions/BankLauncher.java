@@ -22,6 +22,7 @@ public class BankLauncher {
 		while (true) {
 
 			System.out.println("Welcome to the Bank!");
+			System.out.println();
 			System.out.println("What would you like to do?");
 			System.out.println("1. Login");
 			System.out.println("2. Create an account");
@@ -35,6 +36,7 @@ public class BankLauncher {
 			} catch (InputMismatchException e) {
 
 				System.out.println("Please input a valid option!");
+				System.out.println();
 				scanner.reset();
 				scanner = new Scanner(System.in);
 				continue;
@@ -43,6 +45,7 @@ public class BankLauncher {
 			if (option != 1 & option != 2 & option != 0) {
 
 				System.out.println("Please input a valid option!");
+				System.out.println();
 				continue;
 
 			}

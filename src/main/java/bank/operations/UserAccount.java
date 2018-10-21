@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class UserAccount extends Account implements Serializable {
 
 //-- Fields	
-	
+
 	/**
 	 * 
 	 */
@@ -16,59 +16,102 @@ public class UserAccount extends Account implements Serializable {
 	private Account account;
 	private StringBuilder username;
 	private StringBuilder password;
+	public int accountNum;
+	public float accountBal;
+	public ArrayList<StringBuilder> accountHolders;
 
 //-- Constructors
-	
+
 	public UserAccount() {
-		
+
 		super();
-		
+		super.makeAccount(0, null, null, null, 0f, false);
+
 	}
-	
+
 	public UserAccount(int accountNum, StringBuilder username, StringBuilder password,
 			ArrayList<StringBuilder> accountHolders, float accountBal, boolean approved) {
-			
-		 super();
-		 super.makeAccount(accountNum, username, password, accountHolders, accountBal, approved);
-		 this.username = username;
-		 this.password = password;
-		 
+
+		super();
+		super.makeAccount(accountNum, username, password, accountHolders, accountBal, approved);
+		this.username = username;
+		this.password = password;
+
 	}
-	
+
 //-- Methods
-	
+
 	@Override
 	public void checkBal() {
-		
+
 		System.out.println("Your current account balance is $" + this.accountBal);
-		
+
 	}
-	
+
 	@Override
 	public void desposit(float money) {
-		
-		this.accountBal += money;
-		System.out.println("You deposited $" + money + " in your account!");
-		
+
+		if (money < 0) {
+
+			System.out.println("Please enter a valid amount!");
+
+		} else {
+
+			this.accountBal += money;
+			System.out.println("You deposited $" + money + " into your account!");
+
+		}
+
 	}
-	
-	@Override
-	public void transfer(Account account, float money) {
+
+	public void transfer(UserAccount account, float money) {
+
+		if (this.accountBal <= 0) {
+
+			System.out.println("Insufficient Funds in Account!");
+
+		} else if (money < 0) {
+
+			System.out.println("Please enter a valid amount!");
+
+		} else if (this.accountBal < money) {
+
+			System.out.println("Insufficient Funds in Account!");
+
+		} else {
 		
 		this.accountBal -= money;
 		account.accountBal += money;
 		System.out.println("You tranferred $" + money + " to " + account.accountHolders + "!");
 		
+		}
+
 	}
-	
+
 	@Override
 	public void withdraw(float money) {
-		
-		this.accountBal -= money;
-		System.out.println("You withdrew $" + money + " from your account!");
-		
+
+		if (this.accountBal <= 0) {
+
+			System.out.println("Insufficient Funds in Account!");
+
+		} else if (money < 0) {
+
+			System.out.println("Please enter a valid amount!");
+
+		} else if (this.accountBal < money) {
+
+			System.out.println("Insufficient Funds in Account!");
+
+		} else {
+
+			this.accountBal -= money;
+			System.out.println("You withdrew $" + money + " from your account!");
+
+		}
+
 	}
-	
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -76,16 +119,14 @@ public class UserAccount extends Account implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
+
 	public StringBuilder getType() {
 		return type;
 	}
 
-
 	public void setType(StringBuilder type) {
 		this.type = type;
 	}
-
 
 	public Account getAccount() {
 		return account;
@@ -109,6 +150,12 @@ public class UserAccount extends Account implements Serializable {
 
 	public void setPassword(StringBuilder password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "UserAccount [Account Holders=" + this.accountHolders + ", account=" + this.accountNum
+				+ ", username=" + username + ", password=" + "********" + "]";
 	}
 
 }

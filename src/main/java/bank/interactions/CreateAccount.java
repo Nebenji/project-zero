@@ -32,6 +32,7 @@ public class CreateAccount {
 		create.setPassword(passWord);
 		create.accountBal = 0;
 		create.approved = false;
+		System.out.println(create);
 		accts.add(create);
 		bank.setAccounts(accts);
 		file = new File("bank.ser");
@@ -76,6 +77,7 @@ public class CreateAccount {
 
 			}
 
+			
 		}
 
 	}
@@ -118,35 +120,44 @@ public class CreateAccount {
 
 			}
 			ArrayList<StringBuilder> holders = new ArrayList<StringBuilder>();
+			String firstName;
+			String lastName;
 			switch (option) {
 			case 1:
+				scanner.nextLine();
 				System.out.println("Enter First Account Holder's First Name");
 				create.setCustomer(new Customer());
-				create.getCustomer().setFirstName(new StringBuilder(scanner.nextLine()));
+				firstName = scanner.nextLine();
+				create.getCustomer().setFirstName(new StringBuilder(firstName));
 				scanner.nextLine();
 				System.out.println("Enter First Account Holder's Last Name");
-				create.getCustomer().setLastName(new StringBuilder(scanner.nextLine()));
+				lastName = scanner.nextLine();
+				create.getCustomer().setLastName(new StringBuilder(lastName));
 				holders.add(new StringBuilder(create.getCustomer().getFirstName().toString() + " "
 						+ create.getCustomer().getLastName().toString()));
 				String name = "";
 				System.out.println("Enter Second Account Holder's First Name");
 				name = scanner.nextLine();
-				scanner.nextLine();
 				System.out.println("Enter Second Account Holder's Last Name");
 				name = name + " " + scanner.nextLine();
 				holders.add(new StringBuilder(name));
+				create.accountHolders = holders;
 				done = true;
 				break;
 
 			case 2:
+				scanner.nextLine();
 				System.out.println("Enter Account Holder's First Name");
 				create.setCustomer(new Customer());
-				create.getCustomer().setFirstName(new StringBuilder(scanner.nextLine()));
+				firstName = scanner.nextLine();
+				create.getCustomer().setFirstName(new StringBuilder(firstName));
 				scanner.nextLine();
 				System.out.println("Enter First Account Holder's Last Name");
-				create.getCustomer().setLastName(new StringBuilder(scanner.nextLine()));
+				lastName = scanner.nextLine();
+				create.getCustomer().setLastName(new StringBuilder(lastName));
 				holders.add(new StringBuilder(create.getCustomer().getFirstName().toString() + " "
 						+ create.getCustomer().getLastName().toString()));
+				create.accountHolders = holders;
 				done = true;
 				break;
 

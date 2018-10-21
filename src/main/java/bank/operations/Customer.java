@@ -29,5 +29,11 @@ public class Customer implements Serializable {
 	public void setLastName(StringBuilder lastName) {
 		this.lastName = lastName;
 	}
+	@Override
+	public String toString() {
+		return "Customer [firstName=" + firstName + ", lastName=" + lastName + "]";
+	}
+	
+	
 		
 }

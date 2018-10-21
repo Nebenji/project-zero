@@ -29,6 +29,7 @@ public class SaverLoader {
 
 				oos.writeObject(bank);
 				System.out.println("Bank saved!");
+				System.out.println();
 				return bank;
 
 			} catch (IOException o) {
@@ -67,6 +68,8 @@ public class SaverLoader {
 
 			bank = (Bank) ois.readObject();
 			System.out.println("Bank Loaded!");
+			System.out.println();
+			System.out.println();
 			return bank;
 
 		} catch (IOException e) {
