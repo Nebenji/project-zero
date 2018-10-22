@@ -1,6 +1,6 @@
 package bank.interactions;
 
-import java.io.File;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -15,7 +15,7 @@ public class CreateAccount {
 	protected StringBuilder userName;
 	protected StringBuilder passWord;
 
-	public void createAccount(Bank bank, File file, Scanner scanner, SaverLoader saveLoad, int option) {
+	public void createAccount(Bank bank, Scanner scanner, SaverLoader saveLoad, int option) {
 
 		System.out.println("Welcome to the Create an Account Screen!");
 		UserAccount create = new UserAccount();
@@ -27,17 +27,15 @@ public class CreateAccount {
 
 		create = this.createJointAccount(create, scanner, option);
 
-		create.accountNum = 1000000 + accts.size();
+		create.accountNum = 100000 + accts.size();
 		create.setUsername(userName);
 		create.setPassword(passWord);
 		create.accountBal = 0;
 		create.approved = false;
-		System.out.println(create);
-		accts.add(create);
-		bank.setAccounts(accts);
-		file = new File("bank.ser");
-		saveLoad.save(bank, file);
-		saveLoad.load(bank, file);
+//		accts.add(create);
+//		bank.setAccounts(accts);
+		saveLoad.createUser(create);
+		bank.setAccounts(saveLoad.getUserAccounts());
 
 	}
 

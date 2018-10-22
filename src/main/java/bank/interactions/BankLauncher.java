@@ -1,6 +1,6 @@
 package bank.interactions;
 
-import java.io.File;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -14,11 +14,12 @@ public class BankLauncher {
 		Scanner scanner = new Scanner(System.in);
 
 		Bank bank = new Bank();
-		File file = new File("./bank.ser");
+//		File file = new File("./bank.ser");
 		SaverLoader saveLoad = new SaverLoader();
 
-		bank = saveLoad.load(bank, file);
-
+//		bank = saveLoad.load(bank, file);
+		bank.setAccounts(saveLoad.getUserAccounts());
+		
 		while (true) {
 
 			System.out.println("Welcome to the Bank!");
@@ -54,13 +55,13 @@ public class BankLauncher {
 			case 1:
 				// Goes to the Login Screen
 				Login login = new Login();
-				login.login(file, bank, saveLoad, scanner, option);
+				login.login(bank, saveLoad, scanner, option);
 				break;
 
 			case 2:
 				// Goes to the Create Account Screen
 				CreateAccount make = new CreateAccount();
-				make.createAccount(bank, file, scanner, saveLoad, option);
+				make.createAccount(bank, scanner, saveLoad, option);
 				break;
 
 			case 0:

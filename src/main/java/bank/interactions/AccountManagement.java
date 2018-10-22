@@ -1,6 +1,5 @@
 package bank.interactions;
 
-import java.io.File;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,10 +9,11 @@ import bank.statemaintainence.SaverLoader;
 
 public class AccountManagement {
 
-	public void accountManagement(File file, Bank bank, UserAccount current, SaverLoader saveLoad, Scanner scanner,
+	public void accountManagement(Bank bank, UserAccount current, SaverLoader saveLoad, Scanner scanner,
 			int option, float money) {
 
-		while (true) {
+		boolean loggedIn =true;
+		while (loggedIn) {
 
 			System.out.println("Welcome " + current.accountHolders + "! What would you like to do?");
 			System.out.println("1. View Account Information");
@@ -21,6 +21,7 @@ public class AccountManagement {
 			System.out.println("3. Deposit");
 			System.out.println("4. Withdraw");
 			System.out.println("5. Transfer");
+			System.out.println("6. Log Out");
 			System.out.println("0. Exit");
 			try {
 
@@ -34,7 +35,7 @@ public class AccountManagement {
 				continue;
 
 			}
-			if (option != 1 & option != 2 & option != 3 & option != 4 & option != 5 & option != 0) {
+			if (option != 1 & option != 2 & option != 3 & option != 4 & option != 5 & option != 6 & option != 0) {
 
 				System.out.println("Please input a valid option!");
 				continue;
@@ -75,8 +76,7 @@ public class AccountManagement {
 					}
 
 				}
-				file = new File("bank.ser");
-				saveLoad.save(bank, file);
+				saveLoad.update(current);
 				break;
 
 			case 4:
@@ -105,8 +105,7 @@ public class AccountManagement {
 					}
 
 				}
-				file = new File("bank.ser");
-				saveLoad.save(bank, file);
+				saveLoad.update(current);
 				break;
 
 			case 5:
@@ -168,8 +167,13 @@ public class AccountManagement {
 					}
 
 				}
-				file = new File("bank.ser");
-				saveLoad.save(bank, file);
+				saveLoad.update(current);
+				saveLoad.update(account);
+				break;
+				
+			case 6:
+				System.out.println("You have successfully logged out!");
+				loggedIn = false;
 				break;
 
 			case 0:

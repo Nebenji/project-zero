@@ -31,5 +31,14 @@ public class Bank extends UserAccount implements Serializable {
 	public void setAccounts(ArrayList<UserAccount> accounts) {
 		this.accounts = accounts;
 	}
+
+	@Override
+	public String toString() {
+		return "Bank [accounts=" + accounts + ", accountNum=" + accountNum + ", accountBal=" + accountBal
+				+ ", accountHolders=" + accountHolders + ", username=" + this.getUsername() + ", password=" + this.getPassword()
+				+ ", approved=" + approved + "]";
+	}
+	
+	
 	
 }

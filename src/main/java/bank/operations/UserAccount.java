@@ -11,6 +11,7 @@ public class UserAccount extends Account implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int id;
 	private Customer customer;
 	private StringBuilder type;
 	private Account account;
@@ -111,6 +112,18 @@ public class UserAccount extends Account implements Serializable {
 		}
 
 	}
+	
+	public int getId() {
+		
+		return id;
+		
+	}
+	
+	public void setId(int id) {
+		
+		this.id = id;
+		
+	}
 
 	public Customer getCustomer() {
 		return customer;
@@ -151,7 +164,7 @@ public class UserAccount extends Account implements Serializable {
 	public void setPassword(StringBuilder password) {
 		this.password = password;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "UserAccount [Account Holders=" + this.accountHolders + ", account=" + this.accountNum
