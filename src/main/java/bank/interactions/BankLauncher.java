@@ -12,7 +12,7 @@ public class BankLauncher {
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
-
+		
 		Bank bank = new Bank();
 //		File file = new File("./bank.ser");
 		SaverLoader saveLoad = new SaverLoader();

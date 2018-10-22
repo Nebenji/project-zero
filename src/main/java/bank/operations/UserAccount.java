@@ -3,13 +3,14 @@ package bank.operations;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class UserAccount extends Account implements Serializable {
 
 //-- Fields	
 
-	/**
-	 * 
-	 */
+	private static Logger logger = LogManager.getLogger();
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private Customer customer;
@@ -46,6 +47,7 @@ public class UserAccount extends Account implements Serializable {
 	public void checkBal() {
 
 		System.out.println("Your current account balance is $" + this.accountBal);
+		logger.traceExit();
 
 	}
 
@@ -60,6 +62,7 @@ public class UserAccount extends Account implements Serializable {
 
 			this.accountBal += money;
 			System.out.println("You deposited $" + money + " into your account!");
+			logger.traceExit();
 
 		}
 
@@ -84,6 +87,7 @@ public class UserAccount extends Account implements Serializable {
 		this.accountBal -= money;
 		account.accountBal += money;
 		System.out.println("You tranferred $" + money + " to " + account.accountHolders + "!");
+		logger.traceExit();
 		
 		}
 
@@ -108,6 +112,7 @@ public class UserAccount extends Account implements Serializable {
 
 			this.accountBal -= money;
 			System.out.println("You withdrew $" + money + " from your account!");
+			logger.traceExit();
 
 		}
 
