@@ -14,6 +14,38 @@ public class Login {
 	protected boolean match;
 	protected UserAccount current;
 
+	public float getMoney() {
+		return money;
+	}
+
+	public void setMoney(float money) {
+		this.money = money;
+	}
+
+	public boolean isExists() {
+		return exists;
+	}
+
+	public void setExists(boolean exists) {
+		this.exists = exists;
+	}
+
+	public boolean isMatch() {
+		return match;
+	}
+
+	public void setMatch(boolean match) {
+		this.match = match;
+	}
+
+	public UserAccount getCurrent() {
+		return current;
+	}
+
+	public void setCurrent(UserAccount current) {
+		this.current = current;
+	}
+
 	public void login(Bank bank, SaverLoader saveLoad, Scanner scanner, int option) {
 
 		System.out.println("Welcome to the Login Screen!");

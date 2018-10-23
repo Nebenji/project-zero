@@ -46,7 +46,7 @@ public class UserAccount extends Account implements Serializable {
 	@Override
 	public void checkBal() {
 
-		System.out.println("Your current account balance is $" + this.accountBal);
+		System.out.printf("Your current account balance is $" + "%.2f", this.accountBal);
 		logger.traceExit();
 
 	}
@@ -54,6 +54,7 @@ public class UserAccount extends Account implements Serializable {
 	@Override
 	public void desposit(float money) {
 
+		logger.traceEntry("Deposited ${}", money);
 		if (money < 0) {
 
 			System.out.println("Please enter a valid amount!");
@@ -61,7 +62,7 @@ public class UserAccount extends Account implements Serializable {
 		} else {
 
 			this.accountBal += money;
-			System.out.println("You deposited $" + money + " into your account!");
+			System.out.printf("You deposited $" + "%.2f" + " into your account!%n", money);
 			logger.traceExit();
 
 		}
@@ -70,6 +71,7 @@ public class UserAccount extends Account implements Serializable {
 
 	public void transfer(UserAccount account, float money) {
 
+		logger.traceEntry("Transferred ${} to {}", money, account.accountHolders);
 		if (this.accountBal <= 0) {
 
 			System.out.println("Insufficient Funds in Account!");
@@ -86,7 +88,7 @@ public class UserAccount extends Account implements Serializable {
 		
 		this.accountBal -= money;
 		account.accountBal += money;
-		System.out.println("You tranferred $" + money + " to " + account.accountHolders + "!");
+		System.out.printf("You tranferred $" + "%.2f" + " to " + account.accountHolders + "!%n", money);
 		logger.traceExit();
 		
 		}
@@ -96,6 +98,7 @@ public class UserAccount extends Account implements Serializable {
 	@Override
 	public void withdraw(float money) {
 
+		logger.traceEntry("Withdrew ${}", money);
 		if (this.accountBal <= 0) {
 
 			System.out.println("Insufficient Funds in Account!");
@@ -111,7 +114,7 @@ public class UserAccount extends Account implements Serializable {
 		} else {
 
 			this.accountBal -= money;
-			System.out.println("You withdrew $" + money + " from your account!");
+			System.out.printf("You withdrew $" + "%.2f" + " from your account!%n", money);
 			logger.traceExit();
 
 		}
