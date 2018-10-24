@@ -46,7 +46,7 @@ public class UserAccount extends Account implements Serializable {
 	@Override
 	public void checkBal() {
 
-		System.out.printf("Your current account balance is $" + "%.2f", this.accountBal);
+		System.out.printf("Your current account balance is $" + "%.2f" + "\n", this.accountBal);
 		logger.traceExit();
 
 	}

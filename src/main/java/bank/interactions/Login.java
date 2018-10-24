@@ -94,8 +94,8 @@ public class Login {
 
 	public void inputUsername(ArrayList<UserAccount> accounts, Scanner scanner) {
 
+		scanner = new Scanner(System.in);
 		System.out.println("Please input your username.");
-		scanner.nextLine();
 		StringBuilder username = new StringBuilder(scanner.nextLine());
 		current = new UserAccount();
 		exists = false;
@@ -115,6 +115,7 @@ public class Login {
 	public void inputPassword(ArrayList<UserAccount> accounts, Scanner scanner) {
 
 		// Ask for password
+		scanner = new Scanner(System.in);
 		System.out.println("Please enter your password.");
 		match = false;
 		StringBuilder password = new StringBuilder(scanner.nextLine());

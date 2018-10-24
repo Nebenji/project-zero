@@ -134,6 +134,12 @@ public class AccountManagement {
 					}
 
 				}
+				if(account.accountHolders.equals(null)) {
+					
+					System.out.println("Account does not exist!");
+					break;
+					
+				}
 				System.out.println("How much do you want to transfer to " + account.accountHolders + "?");
 				scanner.nextLine();
 				try {

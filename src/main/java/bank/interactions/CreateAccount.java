@@ -122,12 +122,11 @@ public class CreateAccount {
 			String lastName;
 			switch (option) {
 			case 1:
-				scanner.nextLine();
+				scanner = new Scanner(System.in);
 				System.out.println("Enter First Account Holder's First Name");
 				create.setCustomer(new Customer());
 				firstName = scanner.nextLine();
 				create.getCustomer().setFirstName(new StringBuilder(firstName));
-				scanner.nextLine();
 				System.out.println("Enter First Account Holder's Last Name");
 				lastName = scanner.nextLine();
 				create.getCustomer().setLastName(new StringBuilder(lastName));
@@ -163,6 +162,7 @@ public class CreateAccount {
 
 		}
 		
+		System.out.println("Account Created! \n");
 		return create;
 		
 	}

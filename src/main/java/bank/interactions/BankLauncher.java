@@ -22,8 +22,7 @@ public class BankLauncher {
 		
 		while (true) {
 
-			System.out.println("Welcome to the Bank!");
-			System.out.println();
+			System.out.println("Welcome to the Bank! \n");
 			System.out.println("What would you like to do?");
 			System.out.println("1. Login");
 			System.out.println("2. Create an account");
